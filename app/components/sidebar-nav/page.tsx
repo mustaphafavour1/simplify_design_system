@@ -4,7 +4,7 @@ import { PageHeader } from '@/components/docs/PageHeader'
 import { DosDonts } from '@/components/docs/DosDonts'
 import { PropsTable } from '@/components/docs/PropsTable'
 import {
-  SquaresFour, PaperPlaneTilt, CurrencyNgn, ArrowDownToLine,
+  SquaresFour, PaperPlaneTilt, CurrencyNgn, ArrowLineDown,
   ChartLine, Gear, CaretDown, CaretUp, SignOut
 } from '@phosphor-icons/react'
 
@@ -39,7 +39,7 @@ const navItems = [
     { label: 'Bulk Payment',   href: '/payments/bulk' },
   ]},
   { label: 'Transactions', href: '/transactions', icon: CurrencyNgn, badge: 5 },
-  { label: 'Collections',  href: '/collections',  icon: ArrowDownToLine, badge: 8 },
+  { label: 'Collections',  href: '/collections',  icon: ArrowLineDown, badge: 8 },
   { label: 'Reports',      href: '/reports',   icon: ChartLine },
   { label: 'Settings',     href: '/settings',  icon: Gear, children: [
     { label: 'Profile',      href: '/settings/profile' },

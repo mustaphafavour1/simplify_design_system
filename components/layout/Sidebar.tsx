@@ -145,22 +145,8 @@ export function Sidebar({ dynamicSections = [] }: SidebarProps) {
   return (
     <aside className="sidebar">
       <div className="sidebar-logo">
-        <div className="logo-mark">
-          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28">
-            <path d="M20 2C10.06 2 2 10.06 2 20C2 29.94 10.06 38 20 38C29.94 38 38 29.94 38 20C38 10.06 29.94 2 20 2Z" fill="url(#logo-grad)" />
-            <path d="M25 13H17C14.79 13 13 14.79 13 17C13 19.21 14.79 21 17 21H23C25.21 21 27 22.79 27 25C27 27.21 25.21 29 23 29H15" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
-            <defs>
-              <linearGradient id="logo-grad" x1="2" y1="2" x2="38" y2="38" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#64B5F6"/>
-                <stop offset="1" stopColor="#9753E8"/>
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-        <div className="logo-text">
-          <span className="logo-name">Simplify</span>
-          <span className="logo-ds">Design System</span>
-        </div>
+        <img src="/simplify-logo.png" alt="Simplify Synergy" className="sidebar-logo-img" />
+        <span className="logo-ds">Design System</span>
       </div>
 
       <div className="sidebar-search">
@@ -193,13 +179,19 @@ export function Sidebar({ dynamicSections = [] }: SidebarProps) {
         }
         .sidebar-logo {
           display: flex; align-items: center; gap: 10px;
-          padding: 20px 20px 16px;
+          padding: 18px 20px 14px;
           border-bottom: 1px solid rgba(151,83,232,0.12);
-          flex-shrink: 0;
+          flex-shrink: 0; flex-direction: column; align-items: flex-start;
         }
-        .logo-text { display: flex; flex-direction: column; }
-        .logo-name { font-size: 12px; font-weight: 700; color: #fff; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1; }
-        .logo-ds { font-size: 10px; color: rgba(151,83,232,0.75); font-weight: 500; letter-spacing: 0.04em; margin-top: 2px; }
+        .sidebar-logo-img {
+          height: 28px; width: auto;
+          filter: brightness(0) invert(1);
+          opacity: 0.92;
+        }
+        .logo-ds {
+          font-size: 9px; color: rgba(151,83,232,0.7); font-weight: 600;
+          letter-spacing: 0.1em; text-transform: uppercase; margin-top: -4px;
+        }
         .sidebar-search {
           display: flex; align-items: center; gap: 8px;
           margin: 12px 12px 6px; padding: 7px 12px;
