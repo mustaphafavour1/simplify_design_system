@@ -42,6 +42,6 @@ export async function getAllProducts() {
   return sanityFetch(`*[_type == "product"] | order(name asc) { name, slug, tagline, logo, type }`)
 }
 
-export async function getNavSections() {
+export async function getNavSections(): Promise<any[]> {
   return sanityFetch(`*[_type == "navSection"] | order(order asc) { label, "children": items[] { "label": label, "href": "/" + slug } }`)
 }
