@@ -1,3 +1,4 @@
+'use client'
 type Props = {
   section: string
   title: string

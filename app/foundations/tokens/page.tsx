@@ -1,6 +1,6 @@
+'use client'
 import { PageHeader } from '@/components/docs/PageHeader'
 
-export const metadata = { title: 'Design Tokens — SS Design System' }
 
 const tokenGroups = [
   {

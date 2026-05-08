@@ -1,3 +1,4 @@
+'use client'
 type Prop = {
   name: string
   type: string

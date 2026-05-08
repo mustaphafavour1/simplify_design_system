@@ -26,29 +26,7 @@ export default function RootLayout({
           </div>
         </div>
 
-        <style jsx global>{`
-          .app-shell {
-            display: flex;
-            min-height: 100vh;
-            background: var(--color-bg);
-          }
-          .main-area {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            min-width: 0;
-            margin-left: var(--sidebar-width);
-          }
-          .page-content {
-            flex: 1;
-            padding: 48px 56px;
-            max-width: 960px;
-          }
-          @media (max-width: 768px) {
-            .main-area { margin-left: 0; }
-            .page-content { padding: 24px 20px; }
-          }
-        `}</style>
+
       </body>
     </html>
   )

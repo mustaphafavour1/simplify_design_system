@@ -1,6 +1,6 @@
+'use client'
 import { PageHeader } from '@/components/docs/PageHeader'
 
-export const metadata = { title: 'Typography — SS Design System' }
 
 const typeScale = [
   { name: 'Display',     token: '--text-display',  size: '3.5rem / 56px',   weight: '900', lineHeight: '1.05', usage: 'Hero headlines, marketing moments only.' },

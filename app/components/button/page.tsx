@@ -1,9 +1,9 @@
+'use client'
 import { PageHeader } from '@/components/docs/PageHeader'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { PropsTable } from '@/components/docs/PropsTable'
 import { DosDonts } from '@/components/docs/DosDonts'
 
-export const metadata = { title: 'Button — SS Design System' }
 
 const buttonProps = [
   { name: 'variant',   type: '"primary" | "secondary" | "ghost" | "danger"', default: '"primary"', required: false, description: 'Visual style of the button.' },

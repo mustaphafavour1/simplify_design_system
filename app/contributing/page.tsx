@@ -1,6 +1,6 @@
+'use client'
 import { PageHeader } from '@/components/docs/PageHeader'
 
-export const metadata = { title: 'Contributing — SS Design System' }
 
 const checklist = [
   { category: 'Design',       items: ['Figma component with all variants and states defined', 'Uses design tokens (no hardcoded colours or spacing)', 'Dark mode considerations noted', 'Mobile/responsive behaviour documented', 'Accessibility notes — contrast ratios, focus state visible'] },
