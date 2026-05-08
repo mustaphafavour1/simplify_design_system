@@ -79,17 +79,18 @@ export function PageHeader({ section, title, description, status, figmaUrl }: Pr
         .header-figma:hover { color: var(--color-text); border-color: var(--color-text); }
         .header-title {
           font-size: 2.25rem;
-          font-weight: 900;
+          font-weight: 600;
           color: var(--color-text);
-          letter-spacing: -0.03em;
+          letter-spacing: -0.02em;
           margin-bottom: 12px;
-          line-height: 1.1;
+          line-height: 1.15;
         }
         .header-desc {
           font-size: 1rem;
           line-height: 1.75;
           color: var(--color-text-secondary);
           max-width: 600px;
+          font-weight: 400;
         }
         .header-rule {
           height: 1px;

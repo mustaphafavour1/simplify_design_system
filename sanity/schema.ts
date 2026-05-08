@@ -4,6 +4,7 @@ import pattern from './schemas/pattern'
 import brandPage from './schemas/brandPage'
 import product from './schemas/product'
 import changelogEntry from './schemas/changelogEntry'
+import navSection from './schemas/navSection'
 
 export const schemaTypes = [
   component,
@@ -12,4 +13,5 @@ export const schemaTypes = [
   brandPage,
   product,
   changelogEntry,
+  navSection,
 ]

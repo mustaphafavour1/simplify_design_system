@@ -163,11 +163,11 @@ export default function Home() {
         }
         .hero-title {
           font-size: clamp(2.4rem, 5vw, 3.5rem);
-          font-weight: 900;
-          line-height: 1.08;
+          font-weight: 700;
+          line-height: 1.1;
           color: var(--color-text);
           margin-bottom: 16px;
-          letter-spacing: -0.03em;
+          letter-spacing: -0.02em;
         }
         .title-accent { color: var(--color-primary); }
         .hero-desc {
@@ -221,9 +221,9 @@ export default function Home() {
         .stat-value {
           display: block;
           font-size: 2rem;
-          font-weight: 900;
+          font-weight: 700;
           color: var(--color-primary);
-          letter-spacing: -0.03em;
+          letter-spacing: -0.02em;
         }
         .stat-label {
           display: block;
@@ -290,7 +290,7 @@ export default function Home() {
         .card-body { flex: 1; min-width: 0; }
         .card-title {
           font-size: 14px;
-          font-weight: 800;
+          font-weight: 700;
           color: var(--color-text);
           margin-bottom: 4px;
         }
@@ -325,7 +325,7 @@ export default function Home() {
         .principles { border-top: 1px solid var(--color-border); padding-top: 48px; }
         .principles-title {
           font-size: 1.25rem;
-          font-weight: 800;
+          font-weight: 600;
           color: var(--color-text);
           margin-bottom: 24px;
         }
@@ -343,7 +343,7 @@ export default function Home() {
         }
         .principle-title {
           font-size: 14px;
-          font-weight: 800;
+          font-weight: 600;
           color: var(--color-text);
           margin-bottom: 6px;
         }

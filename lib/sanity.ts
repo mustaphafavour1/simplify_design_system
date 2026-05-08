@@ -46,3 +46,12 @@ export async function getAllPatterns() {
 export async function getAllProducts() {
   return client.fetch(`*[_type == "product"] | order(name asc) { name, slug, tagline, logo, type }`)
 }
+
+export async function getNavSections() {
+  return client.fetch(`
+    *[_type == "navSection"] | order(order asc) {
+      label,
+      "children": items[] { "label": label, "href": "/" + slug }
+    }
+  `)
+}

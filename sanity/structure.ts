@@ -39,4 +39,8 @@ export const structure = (S: StructureBuilder) =>
       S.listItem()
         .title('📋 Changelog')
         .child(S.documentTypeList('changelogEntry').title('Changelog')),
+      S.divider(),
+      S.listItem()
+        .title('🗂️ Nav Sections')
+        .child(S.documentTypeList('navSection').title('Nav Sections')),
     ])
