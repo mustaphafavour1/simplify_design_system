@@ -54,7 +54,7 @@ export default function VoiceTonePage() {
         </div>
       </section>
 
-      {/* Tone by context */}
+      {/* Tone by context... */}
       <section className="vt-section">
         <h2 className="section-title">Tone by context</h2>
         <p className="section-desc">The core voice stays consistent — but tone shifts based on what the user is doing and how they&apos;re likely feeling in that moment.</p>
