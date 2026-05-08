@@ -16,7 +16,7 @@ export default async function RootLayout({
 }) {
   // Fetch dynamic nav sections from Sanity.
   // Falls back to empty array gracefully if Sanity isn't connected yet.
-  let dynamicSections = []
+  let dynamicSections: any[] = []
   try {
     dynamicSections = await getNavSections()
   } catch {
