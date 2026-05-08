@@ -17,6 +17,7 @@
     "@sanity/image-url": "^1.0.2",
     "@portabletext/react": "^3.0.18",
     "lucide-react": "^0.383.0",
+    "@sanity/vision": "^3.30.0",
     "clsx": "^2.1.1"
   },
   "devDependencies": {
