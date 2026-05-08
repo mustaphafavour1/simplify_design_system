@@ -15,6 +15,7 @@
     "next-sanity": "^9.0.0",
     "@sanity/client": "^6.15.7",
     "@sanity/image-url": "^1.0.2",
+    "@sanity/vision": "^3.30.0",
     "@portabletext/react": "^3.0.18",
     "lucide-react": "^0.383.0",
     "@phosphor-icons/react": "^2.1.7",
