@@ -1,221 +1,200 @@
 'use client'
 import { PageHeader } from '@/components/docs/PageHeader'
 
-const features = [
-  { icon: '⇄', title: 'Money Transfers',      desc: 'Send and receive money instantly across accounts and banks.' },
-  { icon: '📄', title: 'Bill Payments',         desc: 'Pay utilities, subscriptions, and service providers in-platform.' },
-  { icon: '🏦', title: 'Virtual Bank Accounts', desc: 'Auto-assigned dedicated virtual accounts for collections.' },
-  { icon: '📊', title: 'Business Dashboard',    desc: 'Transaction data and reconciliation for finance teams.' },
-  { icon: '🔗', title: 'Developer API',          desc: 'Integrate VoxePay collections and payouts via REST API.' },
-  { icon: '✅', title: 'KYC / KYB',             desc: 'Identity and business verification built into onboarding.' },
-]
-
-const segments = [
-  { label: 'Personal',    desc: 'Individuals paying bills, sending money to family and friends, and managing everyday finances.' },
-  { label: 'Business',    desc: 'Businesses collecting payments, managing virtual accounts, and reconciling transactions at scale.' },
-  { label: 'Developers',  desc: 'Engineers integrating VoxePay collections, payouts, and webhooks via the REST API.' },
-]
-
-const colors = [
-  { name: 'VoxePay Blue',  hex: '#1B56F4', token: 'voxepay-primary' },
-  { name: 'Sky Blue',      hex: '#4FC3F7', token: 'voxepay-secondary' },
-  { name: 'Deep Navy',     hex: '#0D1B4B', token: 'voxepay-navy' },
-  { name: 'White',         hex: '#FFFFFF', token: 'voxepay-white' },
-]
-
-export default function VoxePayPage() {
+export default function VoiceTonePage() {
   return (
     <div>
       <PageHeader
-        section="Products"
-        title="VoxePay"
-        description="A licensed PSSP payment platform for individuals, businesses, and developers. Pay bills, send money, collect payments, and access transaction data — all in one place."
+        section="Brand"
+        title="Voice & Tone"
+        description="How Simplify Synergy communicates — across products, interfaces, and touchpoints. Formal enough to earn trust. Warm enough to feel human."
       />
 
-      {/* Identity */}
-      <section className="prod-section">
-        <div className="identity-row">
-          {/* Logo block */}
-          <div className="logo-block voxepay-bg">
-            <div className="logo-placeholder">
-              {/* Replace with: <img src="/logos/voxepay-white.png" alt="VoxePay" /> */}
-              <div className="logo-mock">
-                <svg width="36" height="36" viewBox="0 0 48 48" fill="none">
-                  <path d="M8 8 L24 4 L40 8 L44 24 L40 40 L24 44 L8 40 L4 24 Z" fill="rgba(255,255,255,0.15)" stroke="white" strokeWidth="1.5"/>
-                  <path d="M16 16 L32 16 L32 32 L16 32 Z" fill="white" opacity="0.6"/>
-                </svg>
-                <span className="logo-mock-text">VoxePay</span>
-              </div>
-              <span className="logo-note">[Replace with white logo PNG/SVG]</span>
-            </div>
-          </div>
-          {/* Meta */}
-          <div className="identity-meta">
-            <div className="meta-row">
-              <span className="meta-label">Type</span>
-              <span className="meta-value">Web Application + Mobile App + API</span>
-            </div>
-            <div className="meta-row">
-              <span className="meta-label">Licence</span>
-              <span className="meta-value">Licensed PSSP (Payment Solution Service Provider)</span>
-            </div>
-            <div className="meta-row">
-              <span className="meta-label">Integrations</span>
-              <span className="meta-value">NIBSS Inward, Interswitch (Cards), Maestro MFB (Virtual Accounts)</span>
-            </div>
-            <div className="meta-row">
-              <span className="meta-label">Segments</span>
-              <div className="meta-tags">
-                {['Personal', 'Business', 'Developers'].map(s => (
-                  <span key={s} className="meta-tag">{s}</span>
-                ))}
-              </div>
-            </div>
-            <div className="meta-row">
-              <span className="meta-label">Status</span>
-              <span className="status-badge">Live</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* What it does */}
-      <section className="prod-section">
-        <h2 className="section-title">What VoxePay does</h2>
-        <p className="section-desc">
-          VoxePay is Simplify Synergy&apos;s payment gateway — positioned alongside platforms like Paystack and Flutterwave in the Nigerian payments ecosystem. It enables individuals to pay bills and transfer money, businesses to collect payments and reconcile transactions, and developers to integrate payment capabilities via API.
-        </p>
-        <div className="features-grid">
-          {features.map(f => (
-            <div key={f.title} className="feature-card">
-              <span className="feature-icon">{f.icon}</span>
-              <div>
-                <div className="feature-title">{f.title}</div>
-                <div className="feature-desc">{f.desc}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* User segments */}
-      <section className="prod-section">
-        <h2 className="section-title">User segments</h2>
-        <div className="segments-list">
-          {segments.map(s => (
-            <div key={s.label} className="segment-row">
-              <span className="segment-label">{s.label}</span>
-              <span className="segment-desc">{s.desc}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Product colours */}
-      <section className="prod-section">
-        <h2 className="section-title">Product colours</h2>
-        <p className="section-desc">VoxePay uses a distinct blue palette separate from the Simplify Synergy brand purple. Do not mix these in cross-product contexts.</p>
-        <div className="color-row">
-          {colors.map(c => (
-            <div key={c.name} className="prod-swatch">
-              <div className="swatch-color" style={{ background: c.hex, border: c.hex === '#FFFFFF' ? '1.5px solid var(--color-border)' : 'none' }} />
-              <div className="swatch-name">{c.name}</div>
-              <div className="swatch-hex">{c.hex}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Screens */}
-      <section className="prod-section">
-        <h2 className="section-title">Key screens</h2>
-        <p className="section-desc">Reference screens showing VoxePay&apos;s design patterns in context.</p>
-        <div className="screens-grid">
+      {/* Principles */}
+      <section className="vt-section">
+        <h2 className="section-title">Core principles</h2>
+        <div className="principles-grid">
           {[
-            'Homepage / Hero — Bills & Money Transfers',
-            'Business Dashboard — Transaction Overview',
-            'Bulk Upload — Account Management',
-            'KYB Onboarding — Document Upload',
-          ].map(label => (
-            <div key={label} className="screen-placeholder">
-              <div className="screen-inner">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-border-strong)" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                <span>{label}</span>
-                <span className="placeholder-note">[Upload screenshot]</span>
+            {
+              title: 'Formal, not stiff',
+              body: "We work in fintech — people's money is involved. Our voice reflects that with professionalism and precision. But professionalism doesn't mean cold. We write like a knowledgeable colleague, not a legal document.",
+              example: { bad: 'The aforementioned transaction has been processed successfully.', good: 'Your transfer was successful.' },
+            },
+            {
+              title: 'Clear, not clever',
+              body: 'No wordplay, no idioms, no ambiguity. In financial interfaces, confusion costs trust. Every sentence should have one job — and do it plainly.',
+              example: { bad: "Hang tight while we work our magic!", good: 'Processing your payment. This may take a moment.' },
+            },
+            {
+              title: 'Reassuring, not dramatic',
+              body: 'Errors and confirmations are high-stakes moments. Our tone should de-escalate, not amplify. Give users exactly the information they need to move forward — nothing more.',
+              example: { bad: 'CRITICAL ERROR: Transaction failed!', good: 'Payment unsuccessful. Please check your account balance and try again.' },
+            },
+            {
+              title: 'Direct and action-oriented',
+              body: "We talk to the user, not about them. Use 'you/your', active voice, and verb-led labels. Get to the point — every word should earn its place.",
+              example: { bad: 'Users are required to verify their identity before proceeding.', good: 'Verify your identity to continue.' },
+            },
+          ].map(p => (
+            <div key={p.title} className="principle-card">
+              <h3 className="principle-title">{p.title}</h3>
+              <p className="principle-body">{p.body}</p>
+              <div className="example-block">
+                <div className="example-bad">
+                  <span className="ex-label bad">✕ Avoid</span>
+                  <span>{p.example.bad}</span>
+                </div>
+                <div className="example-good">
+                  <span className="ex-label good">✓ Use</span>
+                  <span>{p.example.good}</span>
+                </div>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Design notes */}
-      <section className="prod-section">
-        <h2 className="section-title">Design notes</h2>
-        <div className="notes-list">
+      {/* Tone by context */}
+      <section className="vt-section">
+        <h2 className="section-title">Tone by context</h2>
+        <p className="section-desc">The core voice stays consistent — but tone shifts based on what the user is doing and how they&apos;re likely feeling in that moment.</p>
+        <div className="context-table-wrap">
+          <table className="context-table">
+            <thead>
+              <tr><th>Context</th><th>User feeling</th><th>Our tone</th><th>Example</th></tr>
+            </thead>
+            <tbody>
+              {[
+                { ctx: 'Onboarding',          feeling: 'Curious, cautious',    tone: 'Welcoming, guiding',           ex: '"Let\'s get your account set up. It takes about 3 minutes."' },
+                { ctx: 'Confirmation dialogs', feeling: 'Uncertain, wants clarity', tone: 'Calm, specific, factual', ex: '"Confirm you want to remove account 2001223344 | John Chuks | First Bank from the bulk upload list."' },
+                { ctx: 'Success states',       feeling: 'Relieved, satisfied',  tone: 'Affirming, brief',             ex: '"Transfer successful. ₦50,000.00 has been sent to John Chuks."' },
+                { ctx: 'Error states',         feeling: 'Frustrated, worried',  tone: 'Direct, solution-focused',     ex: '"Payment unsuccessful. Your account balance may be insufficient."' },
+                { ctx: 'Empty states',         feeling: 'Disoriented',          tone: 'Helpful, forward-looking',     ex: '"No transactions yet. Once you send or receive money, they\'ll appear here."' },
+                { ctx: 'Loading states',       feeling: 'Impatient',            tone: 'Reassuring, honest',           ex: '"Processing your payment. This usually takes a few seconds."' },
+                { ctx: 'KYB / Compliance',     feeling: 'Anxious',              tone: 'Clear, procedural, trustworthy', ex: '"Upload your CAC certificate to continue. Your documents are handled securely."' },
+              ].map(r => (
+                <tr key={r.ctx}>
+                  <td className="ctx-name">{r.ctx}</td>
+                  <td>{r.feeling}</td>
+                  <td className="ctx-tone">{r.tone}</td>
+                  <td className="ctx-example">{r.ex}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* Numbers & Currency */}
+      <section className="vt-section">
+        <h2 className="section-title">Numbers & currency</h2>
+        <p className="section-desc">Financial products live and die on data precision. These rules are non-negotiable across all SS products.</p>
+        <div className="rules-grid">
           {[
-            { title: 'Typeface', body: 'Poppins throughout — consistent with all SS products. VoxePay uses the same type scale.' },
-            { title: 'Confirmation dialogs', body: 'Follow the modal pattern strictly. Destructive actions (like bulk account removal) must show the entity name in full — account number, holder name, and bank — as seen in the "Confirm Removal" modal.' },
-            { title: 'Amounts', body: 'All monetary values displayed with two decimal places (₦50,000.00). Right-aligned in tables. See Voice & Tone → Numbers & Currency.' },
-            { title: 'Status colours', body: 'Payment statuses use semantic colours: green (#16A34A) for Successful, red (#DC2626) for Failed, amber (#D97706) for Processing/Pending. Never use VoxePay blue for status.' },
-            { title: 'Figma file', body: '[Link to VoxePay Figma file — add when available]' },
-          ].map(n => (
-            <div key={n.title} className="note-row">
-              <span className="note-title">{n.title}</span>
-              <span className="note-body">{n.body}</span>
+            { rule: 'Always use two decimal places', desc: 'All monetary amounts must display exactly two decimal places, even when the value is whole. Applies everywhere — balances, transaction amounts, fees.', bad: '₦50,000', good: '₦50,000.00' },
+            { rule: 'Right-align amounts in tables', desc: 'Monetary values in tables must be right-aligned so decimal points stack vertically, making scanning and comparison easy.', bad: 'Left-aligned mixed amounts', good: 'Right-aligned, decimals stacked' },
+            { rule: 'Use ₦ symbol, not "NGN"', desc: 'In product interfaces, use ₦ directly before the amount with no space. Use "NGN" only in technical/API contexts.', bad: 'NGN 50,000.00', good: '₦50,000.00' },
+            { rule: 'Commas for thousands separators', desc: 'Format large numbers with commas. Never use spaces or periods as thousand separators.', bad: '₦1000000.00', good: '₦1,000,000.00' },
+            { rule: 'Spell out numbers under 10 in prose', desc: 'In body text, spell out one through nine. Use numerals from 10 onwards.', bad: 'We sent 3 notifications.', good: 'We sent three notifications.' },
+            { rule: 'Dates: DD MMM YYYY', desc: 'Day-month-year with abbreviated month name. Never use slashes — they are ambiguous across regions.', bad: '04/05/2026', good: '04 May 2026' },
+          ].map(r => (
+            <div key={r.rule} className="rule-card">
+              <h4 className="rule-title">{r.rule}</h4>
+              <p className="rule-desc">{r.desc}</p>
+              <div className="rule-examples">
+                <div className="rule-bad"><span className="rl bad">✕</span>{r.bad}</div>
+                <div className="rule-good"><span className="rl good">✓</span>{r.good}</div>
+              </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Word list */}
+      <section className="vt-section">
+        <h2 className="section-title">Word choices</h2>
+        <div className="word-grid">
+          <div className="word-col">
+            <div className="word-col-header good">Prefer</div>
+            {[
+              ['Verify', 'instead of "Authenticate"'],
+              ['Send / Transfer', 'instead of "Remit"'],
+              ['Account number', 'instead of "NUBAN"'],
+              ['Try again', 'instead of "Retry"'],
+              ['Remove', 'for reversible actions'],
+              ['Delete', 'for permanent, irreversible actions only'],
+              ['You / Your', 'instead of "The user" or "The customer"'],
+              ['Processing', 'instead of "Pending" for active states'],
+            ].map(([word, note]) => (
+              <div key={word} className="word-item">
+                <span className="word">{word}</span>
+                <span className="word-note">{note}</span>
+              </div>
+            ))}
+          </div>
+          <div className="word-col">
+            <div className="word-col-header bad">Avoid</div>
+            {[
+              ['Oops', 'Too casual for financial errors'],
+              ['Magic / Seamless', 'Marketing fluff — be specific'],
+              ['Please note that', 'Filler — just say it'],
+              ['Successfully completed', '"Successful" alone is enough'],
+              ['Click here', 'Use descriptive link labels'],
+              ['Invalid', 'Say what is wrong specifically'],
+              ['Error occurred', 'Too vague — explain what happened'],
+              ['Kindly', 'Overly deferential — omit or use "Please"'],
+            ].map(([word, note]) => (
+              <div key={word} className="word-item">
+                <span className="word">{word}</span>
+                <span className="word-note">{note}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       <style jsx>{`
-        .prod-section { margin-bottom: 48px; }
+        .vt-section { margin-bottom: 56px; }
         .section-title { font-size: 1.125rem; font-weight: 600; color: var(--color-text); margin-bottom: 8px; }
         .section-desc { font-size: 13.5px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 20px; max-width: 600px; }
-
-        .identity-row { display: grid; grid-template-columns: 240px 1fr; gap: 16px; align-items: start; }
-        .logo-block { border-radius: 12px; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 160px; }
-        .voxepay-bg { background: linear-gradient(135deg, #1B56F4, #0D1B4B); }
-        .logo-placeholder { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-        .logo-mock { display: flex; align-items: center; gap: 10px; }
-        .logo-mock-text { color: white; font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
-        .logo-note { font-size: 10px; color: rgba(255,255,255,0.4); }
-        .identity-meta { border: 1.5px solid var(--color-border); border-radius: 12px; overflow: hidden; background: var(--color-bg-raised); }
-        .meta-row { display: flex; align-items: flex-start; gap: 16px; padding: 12px 16px; border-bottom: 1px solid var(--color-border); }
-        .meta-row:last-child { border-bottom: none; }
-        .meta-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-muted); min-width: 100px; flex-shrink: 0; margin-top: 1px; }
-        .meta-value { font-size: 13px; color: var(--color-text-secondary); line-height: 1.5; }
-        .meta-tags { display: flex; gap: 6px; flex-wrap: wrap; }
-        .meta-tag { font-size: 11px; font-weight: 600; background: var(--color-bg-subtle); border: 1px solid var(--color-border); padding: 2px 8px; border-radius: 99px; color: var(--color-text-secondary); }
-        .status-badge { font-size: 11px; font-weight: 700; background: #F0FDF4; border: 1px solid #BBF7D0; color: #16A34A; padding: 2px 10px; border-radius: 99px; }
-
-        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-        .feature-card { display: flex; align-items: flex-start; gap: 12px; padding: 16px; border: 1.5px solid var(--color-border); border-radius: 10px; background: var(--color-bg-raised); }
-        .feature-icon { font-size: 20px; flex-shrink: 0; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: #EFF4FF; border-radius: 8px; }
-        .feature-title { font-size: 13px; font-weight: 600; color: var(--color-text); margin-bottom: 3px; }
-        .feature-desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; }
-
-        .segments-list { border: 1.5px solid var(--color-border); border-radius: 12px; overflow: hidden; background: var(--color-bg-raised); }
-        .segment-row { display: flex; align-items: flex-start; gap: 24px; padding: 14px 20px; border-bottom: 1px solid var(--color-border); }
-        .segment-row:last-child { border-bottom: none; }
-        .segment-label { font-size: 13px; font-weight: 700; color: var(--color-text); min-width: 100px; flex-shrink: 0; }
-        .segment-desc { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; }
-
-        .color-row { display: flex; gap: 12px; }
-        .prod-swatch { text-align: center; }
-        .swatch-color { width: 80px; height: 60px; border-radius: 10px; margin-bottom: 8px; }
-        .swatch-name { font-size: 12px; font-weight: 600; color: var(--color-text); }
-        .swatch-hex { font-size: 11px; font-family: var(--font-mono); color: var(--color-text-muted); }
-
-        .screens-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-        .screen-placeholder { border: 2px dashed var(--color-border); border-radius: 12px; overflow: hidden; }
-        .screen-inner { min-height: 160px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; background: var(--color-bg-subtle); font-size: 12.5px; font-weight: 600; color: var(--color-text-secondary); text-align: center; padding: 16px; }
-        .placeholder-note { font-size: 11px; color: var(--color-text-muted); font-weight: 400; }
-
-        .notes-list { border: 1.5px solid var(--color-border); border-radius: 12px; overflow: hidden; background: var(--color-bg-raised); }
-        .note-row { display: flex; align-items: flex-start; gap: 20px; padding: 13px 20px; border-bottom: 1px solid var(--color-border); }
-        .note-row:last-child { border-bottom: none; }
-        .note-title { font-size: 12px; font-weight: 700; color: var(--color-text); min-width: 110px; flex-shrink: 0; margin-top: 1px; }
-        .note-body { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; }
+        .principles-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .principle-card { border: 1.5px solid var(--color-border); border-radius: 12px; padding: 20px; background: var(--color-bg-raised); }
+        .principle-title { font-size: 14px; font-weight: 600; color: var(--color-text); margin-bottom: 8px; }
+        .principle-body { font-size: 13px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 14px; }
+        .example-block { display: flex; flex-direction: column; gap: 6px; }
+        .example-bad, .example-good { display: flex; align-items: flex-start; gap: 8px; font-size: 12.5px; padding: 8px 10px; border-radius: 7px; line-height: 1.5; }
+        .example-bad { background: #FFF5F5; color: #991B1B; }
+        .example-good { background: #F0FDF4; color: #166534; }
+        .ex-label { font-size: 10px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+        .ex-label.bad { color: #DC2626; } .ex-label.good { color: #16A34A; }
+        .context-table-wrap { border: 1.5px solid var(--color-border); border-radius: 12px; overflow: hidden; }
+        .context-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        .context-table thead tr { background: var(--color-bg-subtle); border-bottom: 1.5px solid var(--color-border); }
+        .context-table th { padding: 10px 16px; text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-secondary); }
+        .context-table td { padding: 12px 16px; border-bottom: 1px solid var(--color-border); vertical-align: top; color: var(--color-text-secondary); line-height: 1.6; }
+        .context-table tr:last-child td { border-bottom: none; }
+        .ctx-name { font-weight: 700; color: var(--color-text); white-space: nowrap; }
+        .ctx-tone { color: var(--color-primary); font-weight: 600; }
+        .ctx-example { font-style: italic; font-size: 12.5px; }
+        .rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .rule-card { border: 1.5px solid var(--color-border); border-radius: 12px; padding: 20px; background: var(--color-bg-raised); }
+        .rule-title { font-size: 13.5px; font-weight: 600; color: var(--color-text); margin-bottom: 6px; }
+        .rule-desc { font-size: 13px; color: var(--color-text-secondary); line-height: 1.65; margin-bottom: 12px; }
+        .rule-examples { display: flex; flex-direction: column; gap: 5px; }
+        .rule-bad, .rule-good { display: flex; align-items: center; gap: 8px; font-size: 12.5px; font-family: var(--font-mono); padding: 6px 10px; border-radius: 6px; }
+        .rule-bad { background: #FFF5F5; color: #991B1B; }
+        .rule-good { background: #F0FDF4; color: #166534; }
+        .rl { font-size: 11px; font-weight: 800; font-family: var(--font-sans); flex-shrink: 0; }
+        .rl.bad { color: #DC2626; } .rl.good { color: #16A34A; }
+        .word-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .word-col { border: 1.5px solid var(--color-border); border-radius: 12px; overflow: hidden; background: var(--color-bg-raised); }
+        .word-col-header { padding: 12px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; border-bottom: 1.5px solid var(--color-border); }
+        .word-col-header.good { color: #16A34A; background: #F0FDF4; }
+        .word-col-header.bad { color: #DC2626; background: #FFF5F5; }
+        .word-item { display: flex; flex-direction: column; padding: 10px 16px; border-bottom: 1px solid var(--color-border); }
+        .word-item:last-child { border-bottom: none; }
+        .word { font-size: 13px; font-weight: 600; color: var(--color-text); }
+        .word-note { font-size: 12px; color: var(--color-text-muted); margin-top: 1px; }
       `}</style>
     </div>
   )
