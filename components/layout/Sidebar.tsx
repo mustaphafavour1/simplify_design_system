@@ -32,6 +32,7 @@ const coreNav: NavItem[] = [
       { label: 'Iconography',    href: '/foundations/iconography' },
       { label: 'Motion',         href: '/foundations/motion' },
       { label: 'Accessibility',  href: '/foundations/accessibility' },
+      { label: 'Data Formatting',href: '/foundations/data-formatting' },
     ],
   },
   {
