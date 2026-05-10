@@ -1,0 +1,18 @@
+- Checking project info
+[32m✔[39m Checking project info
+? Select existing studio hostname, or create a new one
+❯ Create new studio hostname
+ ──────────────
+  ss-design-system
+
+↑↓ navigate • ⏎ select[?25l[23G[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G? Select existing studio hostname, or create a new one
+  Create new studio hostname
+ ──────────────
+❯ ss-design-system
+
+↑↓ navigate • ⏎ select[?25l[23G[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G✔ Select existing studio hostname, or create a new one ss-design-system[72G
+[?25h- Clean output folder
+[32m✔[39m Clean output folder (5ms)
+- Build Sanity Studio
+[32m✔[39m Build Sanity Studio (10271ms)
+ ›
