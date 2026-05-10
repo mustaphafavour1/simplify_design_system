@@ -84,9 +84,10 @@ const coreNav: NavItem[] = [
   {
     label: 'Products',
     children: [
-      { label: 'Maestro MFB',   href: '/products/maestro' },
-      { label: 'VoxePay',       href: '/products/voxepay' },
-      { label: 'OAGF Treasury', href: '/products/oagf' },
+      { label: 'Maestro MFB',          href: '/products/maestro' },
+      { label: 'VoxePay',              href: '/products/voxepay' },
+      { label: 'OAGF Treasury',        href: '/products/oagf' },
+      { label: 'Compliance Engine',    href: '/products/compliance' },
     ],
   },
   { label: 'Contributing', href: '/contributing' },
