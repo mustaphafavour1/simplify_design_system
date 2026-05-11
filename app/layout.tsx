@@ -8,8 +8,8 @@ export const metadata: Metadata = {
   title: 'Simplify Synergy — Design System',
   description: 'The official design system for Simplify Synergy products.',
   icons: {
-    icon: '/public/simplify-icon.png',
-    apple: '/public/simplify-icon.png',
+    icon: '/simplify-logo.png',
+    apple: '/simplify-logo.png',
   },
 }
 
@@ -20,9 +20,10 @@ export default async function RootLayout({
 }) {
   // Fetch dynamic nav sections from Sanity.
   // Falls back to empty array gracefully if Sanity isn't connected yet.
-  let dynamicSections = []
+  let dynamicSections: any[] = []
   try {
-    dynamicSections = await getNavSections()
+    const sections = await getNavSections()
+    if (Array.isArray(sections)) dynamicSections = sections
   } catch {
     // Sanity not configured yet — use static nav only
   }
