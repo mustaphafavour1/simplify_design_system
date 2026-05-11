@@ -10,7 +10,7 @@ export const client = projectId
   : null
 
 export function urlFor(source: any) {
-  if (!client) return { url: () => '' }
+  if (!client) return { width: (_: number) => ({ url: () => '' }), url: () => '' }
   return imageUrlBuilder(client).image(source)
 }
 
