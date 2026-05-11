@@ -26,11 +26,11 @@ async function sanityFetch<T>(query: string, params = {}): Promise<T | null> {
 }
 
 // ── Components ────────────────────────────────────────────────────────────
-export async function getAllComponents() {
+export async function getAllComponents(): Promise<any> {
   return sanityFetch(`*[_type == "component" && !(_id in path("drafts.**"))] | order(name asc) { name, slug, category, status, description }`)
 }
 
-export async function getComponentBySlug(slug: string) {
+export async function getComponentBySlug(slug: string): Promise<any> {
   return sanityFetch(
     `*[_type == "component" && slug.current == $slug && !(_id in path("drafts.**"))][0] {
       name, slug, category, status, description, dos, donts, figmaUrl
@@ -40,11 +40,11 @@ export async function getComponentBySlug(slug: string) {
 }
 
 // ── Foundations ───────────────────────────────────────────────────────────
-export async function getAllFoundations() {
+export async function getAllFoundations(): Promise<any> {
   return sanityFetch(`*[_type == "foundation" && !(_id in path("drafts.**"))] | order(title asc) { title, slug, description }`)
 }
 
-export async function getFoundationBySlug(slug: string) {
+export async function getFoundationBySlug(slug: string): Promise<any> {
   return sanityFetch(
     `*[_type == "foundation" && slug.current == $slug && !(_id in path("drafts.**"))][0] { title, slug, description, body, figmaUrl }`,
     { slug }
@@ -52,11 +52,11 @@ export async function getFoundationBySlug(slug: string) {
 }
 
 // ── Patterns ──────────────────────────────────────────────────────────────
-export async function getAllPatterns() {
+export async function getAllPatterns(): Promise<any> {
   return sanityFetch(`*[_type == "pattern" && !(_id in path("drafts.**"))] | order(title asc) { title, slug, description }`)
 }
 
-export async function getPatternBySlug(slug: string) {
+export async function getPatternBySlug(slug: string): Promise<any> {
   return sanityFetch(
     `*[_type == "pattern" && slug.current == $slug && !(_id in path("drafts.**"))][0] { title, slug, description, body, figmaUrl }`,
     { slug }
@@ -64,11 +64,11 @@ export async function getPatternBySlug(slug: string) {
 }
 
 // ── Products ──────────────────────────────────────────────────────────────
-export async function getAllProducts() {
+export async function getAllProducts(): Promise<any> {
   return sanityFetch(`*[_type == "product" && !(_id in path("drafts.**"))] | order(name asc) { name, slug, tagline, logo, type, status }`)
 }
 
-export async function getProductBySlug(slug: string) {
+export async function getProductBySlug(slug: string): Promise<any> {
   return sanityFetch(
     `*[_type == "product" && slug.current == $slug && !(_id in path("drafts.**"))][0] {
       name, slug, tagline, description, type, status,
@@ -82,11 +82,11 @@ export async function getProductBySlug(slug: string) {
 }
 
 // ── Changelog ─────────────────────────────────────────────────────────────
-export async function getChangelog() {
+export async function getChangelog(): Promise<any> {
   return sanityFetch(`*[_type == "changelogEntry" && !(_id in path("drafts.**"))] | order(releaseDate desc) { version, releaseDate, type, changes }`)
 }
 
 // ── Nav sections (dynamic sidebar) ───────────────────────────────────────
-export async function getNavSections() {
+export async function getNavSections(): Promise<any> {
   return sanityFetch(`*[_type == "navSection" && !(_id in path("drafts.**"))] | order(order asc) { label, "children": items[] { "label": label, "href": href } }`)
 }
