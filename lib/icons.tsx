@@ -1,58 +1,49 @@
 /**
- * Phosphor Icon Resolver
- * Maps string icon names (stored in Sanity) to actual Phosphor components.
- * Editors pick from the curated list defined in sanity/schemas/product.ts
+ * Phosphor Icon Resolver — SSR safe
+ * Imports from /dist/ssr so this works in both Server and Client Components.
  */
 import {
   ArrowsLeftRight, Receipt, Bank, ChartBar, ChartLine, ChartPie,
   Code, ShieldCheck, ShieldStar, CurrencyNgn, Users, User,
-  FileText, FilePdf, Gear, House, Bell, MagnifyingGlass,
+  FileText, Gear, House, Bell, MagnifyingGlass,
   ArrowRight, ArrowLeft, ArrowDown, ArrowUp, ArrowUpRight,
   Plus, Minus, Trash, PencilSimple, Copy, Download, Upload,
   Eye, EyeSlash, Lock, Key, CheckCircle, XCircle, Warning,
-  Info, Question, Wallet, CreditCard, Money, Coins, Handshake,
-  Buildings, Factory, Globe, MapPin, Phone, Envelope, Calendar,
-  CalendarBlank, Clock, Timer, Lightning, Star, Heart, Bookmark,
-  Tag, Funnel, SortAscending, SortDescending, DotsThree,
-  SquaresFour, GridFour, List, Table, Rows, Columns,
-  PaperPlaneTilt, Package, Cube, Stack, Laptop, DeviceMobile,
-  Monitor, Database, CloudArrowUp, CloudArrowDown,
-  PlugsConnected, LinkSimple, QrCode, Barcode,
-  SignIn, SignOut, UserCircle, UserPlus, UsersThree,
-  Certificate, Clipboard, ClipboardText, Note, NotePencil,
-  Wrench, SlidersHorizontal, ToggleLeft, ToggleRight,
-  CaretDown, CaretUp, CaretLeft, CaretRight,
+  Info, Wallet, CreditCard, Money, Coins, Handshake,
+  Buildings, Globe, MapPin, Envelope, Calendar,
+  CalendarBlank, Clock, Timer, Lightning, Star, Bookmark,
+  Tag, Funnel, DotsThree, SquaresFour, GridFour, List,
+  Table, PaperPlaneTilt, Package, Cube, Stack, Laptop,
+  DeviceMobile, Monitor, Database, CloudArrowUp, CloudArrowDown,
+  PlugsConnected, LinkSimple, UserCircle, UserPlus, UsersThree,
+  Certificate, Clipboard, ClipboardText, Note, Wrench,
+  SlidersHorizontal, CaretDown, CaretUp, CaretLeft, CaretRight,
   ArrowLineDown, ArrowLineUp, ArrowClockwise,
-  CheckSquare, XSquare, MinusSquare,
-  IdentificationCard, IdentificationBadge,
-  Headset, ChatsCircle, ChatText,
-  TrendUp, TrendDown,
-} from '@phosphor-icons/react'
+  IdentificationCard, IdentificationBadge, Headset, ChatText,
+  TrendUp, TrendDown, Question, FilePdf, NotePencil,
+  ToggleLeft, ToggleRight, CheckSquare, XSquare,
+} from '@phosphor-icons/react/dist/ssr'
 
 export const iconMap: Record<string, React.ComponentType<any>> = {
   ArrowsLeftRight, Receipt, Bank, ChartBar, ChartLine, ChartPie,
   Code, ShieldCheck, ShieldStar, CurrencyNgn, Users, User,
-  FileText, FilePdf, Gear, House, Bell, MagnifyingGlass,
+  FileText, Gear, House, Bell, MagnifyingGlass,
   ArrowRight, ArrowLeft, ArrowDown, ArrowUp, ArrowUpRight,
   Plus, Minus, Trash, PencilSimple, Copy, Download, Upload,
   Eye, EyeSlash, Lock, Key, CheckCircle, XCircle, Warning,
-  Info, Question, Wallet, CreditCard, Money, Coins, Handshake,
-  Buildings, Factory, Globe, MapPin, Phone, Envelope, Calendar,
-  CalendarBlank, Clock, Timer, Lightning, Star, Heart, Bookmark,
-  Tag, Funnel, SortAscending, SortDescending, DotsThree,
-  SquaresFour, GridFour, List, Table, Rows, Columns,
-  PaperPlaneTilt, Package, Cube, Stack, Laptop, DeviceMobile,
-  Monitor, Database, CloudArrowUp, CloudArrowDown,
-  PlugsConnected, LinkSimple, QrCode, Barcode,
-  SignIn, SignOut, UserCircle, UserPlus, UsersThree,
-  Certificate, Clipboard, ClipboardText, Note, NotePencil,
-  Wrench, SlidersHorizontal, ToggleLeft, ToggleRight,
-  CaretDown, CaretUp, CaretLeft, CaretRight,
+  Info, Wallet, CreditCard, Money, Coins, Handshake,
+  Buildings, Globe, MapPin, Envelope, Calendar,
+  CalendarBlank, Clock, Timer, Lightning, Star, Bookmark,
+  Tag, Funnel, DotsThree, SquaresFour, GridFour, List,
+  Table, PaperPlaneTilt, Package, Cube, Stack, Laptop,
+  DeviceMobile, Monitor, Database, CloudArrowUp, CloudArrowDown,
+  PlugsConnected, LinkSimple, UserCircle, UserPlus, UsersThree,
+  Certificate, Clipboard, ClipboardText, Note, Wrench,
+  SlidersHorizontal, CaretDown, CaretUp, CaretLeft, CaretRight,
   ArrowLineDown, ArrowLineUp, ArrowClockwise,
-  CheckSquare, XSquare, MinusSquare,
-  IdentificationCard, IdentificationBadge,
-  Headset, ChatsCircle, ChatText,
-  TrendUp, TrendDown,
+  IdentificationCard, IdentificationBadge, Headset, ChatText,
+  TrendUp, TrendDown, Question, FilePdf, NotePencil,
+  ToggleLeft, ToggleRight, CheckSquare, XSquare,
 }
 
 type Props = {
@@ -68,5 +59,4 @@ export function PhosphorIcon({ name, size = 20, weight = 'duotone', color }: Pro
   return <Icon size={size} weight={weight} color={color} />
 }
 
-// Curated list for Sanity dropdown — copy these values into the schema
 export const ICON_OPTIONS = Object.keys(iconMap).sort().map(k => ({ value: k, title: k }))
