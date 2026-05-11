@@ -1,180 +1,151 @@
-'use client'
 import { PageHeader } from '@/components/docs/PageHeader'
+import { getChangelog } from '@/lib/sanity'
 
+export const revalidate = 0
 
-const checklist = [
-  { category: 'Design',       items: ['Figma component with all variants and states defined', 'Uses design tokens (no hardcoded colours or spacing)', 'Dark mode considerations noted', 'Mobile/responsive behaviour documented', 'Accessibility notes — contrast ratios, focus state visible'] },
-  { category: 'Documentation',items: ['Component page created in the design system', 'Usage guidelines written (do\'s and don\'ts)', 'All props/API documented', 'At least 2 code examples provided', 'Related components linked'] },
-  { category: 'Code',         items: ['Component implemented in React/TypeScript', 'Props typed correctly with JSDoc comments', 'Keyboard accessible (Tab, Enter, Escape where applicable)', 'ARIA roles and labels applied', 'Unit tests written for core behaviour'] },
+const STATIC_CHANGELOG = [
+  {
+    version: 'v1.0.0',
+    releaseDate: '2026-05-11',
+    type: 'major',
+    changes: [
+      { changeType: 'added', description: 'Design system website launched with full component, foundation, and pattern documentation.' },
+      { changeType: 'added', description: 'Brand foundations: colours (25–900 scale), typography (Poppins + Nunito), logo guidelines, voice & tone.' },
+      { changeType: 'added', description: 'Design tokens, spacing (4px base unit), elevation (6 levels), border radius, iconography (Phosphor), motion, accessibility, data formatting.' },
+      { changeType: 'added', description: '25 components: Button, Icon Button, Link, Text Input, Select, Checkbox, Toggle, Date Picker, Sidebar Nav, Tabs, Breadcrumbs, Pagination, Table, Stat Card, Badge, Avatar, Alert, Toast, Modal, Tooltip, Empty State, Skeleton, Card, Accordion, Divider.' },
+      { changeType: 'added', description: 'Pattern library: Authentication (2 formats), Dashboard Layout, Data Tables, Forms & Validation, Empty & Error States.' },
+      { changeType: 'added', description: 'Product showcase: VoxePay, Maestro MFB, Simplify Compliance Engine, OAGF Treasury Portal.' },
+      { changeType: 'added', description: 'Sanity CMS integration — content editable from Studio without code changes.' },
+    ],
+  },
 ]
 
-export default function ContributingPage() {
+const TYPE_STYLE: Record<string, string> = {
+  major: 'changelog-type changelog-type-major',
+  minor: 'changelog-type changelog-type-minor',
+  patch: 'changelog-type changelog-type-patch',
+}
+
+const CHANGE_STYLE: Record<string, string> = {
+  added:   'changelog-change-type change-added',
+  changed: 'changelog-change-type change-changed',
+  fixed:   'changelog-change-type change-fixed',
+  removed: 'changelog-change-type change-removed',
+}
+
+function formatDate(dateStr: string) {
+  const d = new Date(dateStr)
+  return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
+}
+
+export default async function ContributingPage() {
+  const sanityChangelog = await getChangelog()
+  const entries = (sanityChangelog && (sanityChangelog as any[]).length > 0)
+    ? sanityChangelog as any[]
+    : STATIC_CHANGELOG
+
   return (
     <div>
-      <PageHeader
-        section="Contributing"
-        title="Contributing"
-        description="The design system is a shared resource — owned by everyone, maintained by everyone. Here's how to propose changes, add new components, and keep things consistent."
-      />
+      <PageHeader section="" title="Contributing"
+        description="How to propose changes, add components, and keep the system healthy. Plus the full changelog of every version released." />
 
-      {/* Process */}
-      <section className="contrib-section">
-        <h2 className="section-title">Contribution process</h2>
-        <div className="steps">
+      {/* Proposal process */}
+      <section style={{ marginBottom: 52 }}>
+        <h2 style={{ fontSize:'1.125rem', fontWeight:600, color:'var(--color-text)', marginBottom:16 }}>Proposing a change</h2>
+        <div style={{ border:'1.5px solid var(--color-border)', borderRadius:12, overflow:'hidden', background:'var(--color-bg-raised)' }}>
           {[
-            { step: '01', title: 'Identify the gap',    body: 'Check if what you need already exists or if a variant of an existing component covers it. Avoid duplication.' },
-            { step: '02', title: 'Raise a proposal',    body: 'Open a GitHub issue using the "New Component" template. Describe the use case, which product needs it, and share any Figma references.' },
-            { step: '03', title: 'Design in Figma',     body: 'Create the component in the SS Figma file, covering all variants, states, and responsive behaviour. Share the link in your proposal.' },
-            { step: '04', title: 'Get reviewed',         body: 'At least one designer and one engineer must review and approve before the component is added to the system.' },
-            { step: '05', title: 'Build & document',    body: 'Implement the component, write the documentation page following the template, and ensure the checklist below is complete.' },
-            { step: '06', title: 'Ship & announce',     body: 'Merge to main, bump the version in the changelog, and notify the team in Slack so everyone knows it\'s available.' },
+            { step:'01', title:'Open a discussion',     desc:'Create a GitHub Discussion or Slack thread in #design-system describing the change, the problem it solves, and which products it affects.' },
+            { step:'02', title:'Design in Figma first', desc:'New components must be designed in Figma before any code is written. Follow the Figma naming convention: Module - Screen - State.' },
+            { step:'03', title:'Get sign-off',          desc:'At least one designer and one engineer must review and approve the Figma spec before implementation begins.' },
+            { step:'04', title:'Build to the checklist',desc:'Use the component checklist below. Every item must be complete before a PR is opened.' },
+            { step:'05', title:'Open a PR',             desc:'PR title format: "feat(component): Add [ComponentName]" or "fix(component): [description]". Link to the Figma spec.' },
+            { step:'06', title:'Update the changelog',  desc:'Add your change to the changelog in Sanity Studio. Version bumps follow semver: major for breaking, minor for new features, patch for fixes.' },
           ].map(s => (
-            <div key={s.step} className="step-item">
-              <div className="step-num">{s.step}</div>
-              <div className="step-body">
-                <h3 className="step-title">{s.title}</h3>
-                <p className="step-desc">{s.body}</p>
+            <div key={s.step} style={{ display:'flex', gap:16, padding:'14px 20px', borderBottom:'1px solid var(--color-border)', alignItems:'flex-start' }}>
+              <span style={{ fontSize:12, fontWeight:800, color:'var(--color-primary)', opacity:.5, flexShrink:0, minWidth:24, paddingTop:1 }}>{s.step}</span>
+              <div>
+                <div style={{ fontSize:13.5, fontWeight:700, color:'var(--color-text)', marginBottom:3 }}>{s.title}</div>
+                <div style={{ fontSize:13, color:'var(--color-text-secondary)', lineHeight:1.65 }}>{s.desc}</div>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Checklist */}
-      <section className="contrib-section">
-        <h2 className="section-title">Component checklist</h2>
-        <p className="section-desc">A component is only considered "done" when all items below are satisfied.</p>
-        <div className="checklist-grid">
-          {checklist.map(c => (
-            <div key={c.category} className="checklist-card">
-              <h3 className="checklist-category">{c.category}</h3>
-              <ul className="checklist-items">
-                {c.items.map((item, i) => (
-                  <li key={i}>
-                    <span className="check-icon">☐</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
+      {/* Component checklist */}
+      <section style={{ marginBottom: 52 }}>
+        <h2 style={{ fontSize:'1.125rem', fontWeight:600, color:'var(--color-text)', marginBottom:16 }}>Component checklist</h2>
+        <div style={{ border:'1.5px solid var(--color-border)', borderRadius:12, overflow:'hidden', background:'var(--color-bg-raised)' }}>
+          {[
+            'Figma spec complete — all variants, states, and responsive behaviour documented',
+            'Component props defined — all props typed, defaulted, and documented in PropsTable',
+            'All interactive states — default, hover, focus, active, disabled, loading, error',
+            'Empty state defined — for any component that can receive data',
+            'Keyboard accessible — fully operable via keyboard, focus ring visible',
+            'ARIA labels — all icon-only elements and non-obvious UI labelled for screen readers',
+            'Colour contrast passes WCAG AA — 4.5:1 for normal text, 3:1 for large text',
+            'Responsive — tested at 320px, 768px, and 1280px viewport widths',
+            'Dark mode compatible — uses CSS variables, not hardcoded colours',
+            'Do\'s and Don\'ts written — at least 3 of each',
+            'Sanity entry added — component registered in Studio',
+            'Changelog updated — entry added to the correct version in Sanity Studio',
+          ].map((item, i) => (
+            <div key={i} style={{ display:'flex', gap:12, padding:'11px 20px', borderBottom: i < 11 ? '1px solid var(--color-border)' : 'none', alignItems:'flex-start' }}>
+              <div style={{ width:18, height:18, border:'1.5px solid var(--color-border)', borderRadius:4, flexShrink:0, marginTop:1 }} />
+              <span style={{ fontSize:13, color:'var(--color-text-secondary)', lineHeight:1.6 }}>{item}</span>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Naming */}
-      <section className="contrib-section">
-        <h2 className="section-title">Naming conventions</h2>
-        <div className="naming-table-wrap">
-          <table className="naming-table">
-            <thead><tr><th>Thing</th><th>Convention</th><th>Example</th></tr></thead>
-            <tbody>
-              {[
-                ['Component names',  'PascalCase',           'StatCard, IconButton, DatePicker'],
-                ['Props',            'camelCase',            'isLoading, leftIcon, fullWidth'],
-                ['CSS tokens',       '--kebab-case',         '--color-primary, --space-4'],
-                ['Figma layers',     'PascalCase / groups',  'Button/Primary/Default'],
-                ['Figma tokens',     'category/name/variant','color/primary/500'],
-                ['File names',       'kebab-case',           'stat-card.tsx, date-picker.tsx'],
-              ].map(([thing, conv, ex]) => (
-                <tr key={thing as string}>
-                  <td>{thing}</td>
-                  <td><code>{conv}</code></td>
-                  <td><code className="ex-code">{ex}</code></td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+      {/* Figma naming */}
+      <section style={{ marginBottom: 52 }}>
+        <h2 style={{ fontSize:'1.125rem', fontWeight:600, color:'var(--color-text)', marginBottom:8 }}>Figma naming convention</h2>
+        <p style={{ fontSize:13.5, color:'var(--color-text-secondary)', lineHeight:1.7, marginBottom:16 }}>
+          All screens follow the format: <strong style={{ color:'var(--color-text)' }}>Module - Screen Name - State</strong>. Within a product&apos;s own Figma file, no product prefix is needed.
+        </p>
+        <div style={{ border:'1.5px solid var(--color-border)', borderRadius:12, overflow:'hidden', background:'var(--color-bg-raised)' }}>
+          {[
+            { ex:'Login - Empty',                              note:'Auth screen, empty state' },
+            { ex:'Login - Filled',                             note:'Auth screen, filled state' },
+            { ex:'User Management - Create New User - Empty',  note:'Sub-page, empty state' },
+            { ex:'User Management - Create New User - Filled', note:'Sub-page, filled state' },
+            { ex:'Transactions - View Transaction Details',    note:'Detail page' },
+            { ex:'Change Password - Error',                    note:'Modal with error state' },
+          ].map(r => (
+            <div key={r.ex} style={{ display:'flex', gap:16, padding:'11px 16px', borderBottom:'1px solid var(--color-border)', alignItems:'center', flexWrap:'wrap' }}>
+              <code style={{ fontSize:12, fontFamily:'var(--font-mono)', color:'var(--color-primary)', background:'var(--color-primary-faint)', padding:'2px 8px', borderRadius:4, flexShrink:0 }}>{r.ex}</code>
+              <span style={{ fontSize:12.5, color:'var(--color-text-muted)' }}>{r.note}</span>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* Changelog */}
-      <section className="contrib-section">
-        <h2 className="section-title">Changelog</h2>
-        <div className="changelog">
-          <div className="changelog-entry">
-            <div className="changelog-meta">
-              <span className="changelog-version">v1.0.0</span>
-              <span className="changelog-date">May 2026</span>
-              <span className="changelog-type initial">Initial release</span>
+      <section>
+        <h2 style={{ fontSize:'1.125rem', fontWeight:600, color:'var(--color-text)', marginBottom:8 }}>Changelog</h2>
+        <p style={{ fontSize:13, color:'var(--color-text-muted)', marginBottom:28 }}>
+          Managed in Sanity Studio — add new entries there after each release.
+        </p>
+
+        {entries.map((entry: any) => (
+          <div key={entry.version} className="changelog-entry">
+            <div className="changelog-header">
+              <span className="changelog-version">{entry.version}</span>
+              <span className={TYPE_STYLE[entry.type] ?? 'changelog-type changelog-type-minor'}>{entry.type}</span>
+              <span className="changelog-date">{formatDate(entry.releaseDate)}</span>
             </div>
-            <ul className="changelog-items">
-              <li>Design system website launched.</li>
-              <li>Brand foundations: colours, typography, logo guidelines.</li>
-              <li>Design tokens defined and documented.</li>
-              <li>Core component library — Button, Input, Table, Modal, Badge, Card, Toast, Alert, Avatar, Sidebar Nav, Tabs, Pagination, Stat Card, Empty State, Skeleton.</li>
-              <li>Pattern library — Dashboard layout, Authentication, Forms & Validation.</li>
-              <li>Product showcase — Maestro MFB, VoxePay, OAGF Treasury.</li>
-            </ul>
+            <div className="changelog-changes">
+              {entry.changes?.map((c: any, i: number) => (
+                <div key={i} className="changelog-change-row">
+                  <span className={CHANGE_STYLE[c.changeType] ?? CHANGE_STYLE.changed}>{c.changeType}</span>
+                  <span className="changelog-change-desc">{c.description}</span>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        ))}
       </section>
-
-      <style jsx>{`
-        .contrib-section { margin-bottom: 56px; }
-        .section-title { font-size: 1.125rem; font-weight: 800; color: var(--color-text); margin-bottom: 8px; }
-        .section-desc { font-size: 13px; color: var(--color-text-secondary); margin-bottom: 20px; line-height: 1.6; }
-
-        /* Steps */
-        .steps { display: flex; flex-direction: column; gap: 0; }
-        .step-item {
-          display: flex; gap: 20px;
-          padding: 20px 0;
-          border-bottom: 1px solid var(--color-border);
-        }
-        .step-item:last-child { border-bottom: none; }
-        .step-num {
-          font-size: 1.5rem; font-weight: 900;
-          color: var(--color-primary); opacity: 0.3;
-          flex-shrink: 0; width: 40px;
-          line-height: 1;
-        }
-        .step-title { font-size: 14px; font-weight: 800; color: var(--color-text); margin-bottom: 4px; }
-        .step-desc { font-size: 13px; color: var(--color-text-secondary); line-height: 1.7; }
-
-        /* Checklist */
-        .checklist-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-        .checklist-card {
-          border: 1.5px solid var(--color-border);
-          border-radius: 12px; padding: 20px;
-          background: var(--color-bg-raised);
-        }
-        .checklist-category {
-          font-size: 12px; font-weight: 800;
-          text-transform: uppercase; letter-spacing: 0.08em;
-          color: var(--color-primary); margin-bottom: 14px;
-        }
-        .checklist-items { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
-        .checklist-items li {
-          display: flex; align-items: flex-start; gap: 8px;
-          font-size: 12.5px; line-height: 1.6; color: var(--color-text-secondary);
-        }
-        .check-icon { color: var(--color-border-strong); flex-shrink: 0; font-size: 14px; }
-
-        /* Naming */
-        .naming-table-wrap { border: 1.5px solid var(--color-border); border-radius: 12px; overflow: hidden; }
-        .naming-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-        .naming-table thead tr { background: var(--color-bg-subtle); border-bottom: 1.5px solid var(--color-border); }
-        .naming-table th { padding: 10px 16px; text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-secondary); }
-        .naming-table td { padding: 12px 16px; border-bottom: 1px solid var(--color-border); color: var(--color-text-secondary); }
-        .naming-table tr:last-child td { border-bottom: none; }
-        .naming-table td code { font-family: var(--font-mono); font-size: 12px; background: var(--color-bg-subtle); padding: 2px 6px; border-radius: 4px; color: var(--color-text); }
-        .naming-table .ex-code { color: var(--color-primary); background: var(--color-primary-faint); }
-
-        /* Changelog */
-        .changelog { }
-        .changelog-entry { border: 1.5px solid var(--color-border); border-radius: 12px; padding: 20px 24px; background: var(--color-bg-raised); }
-        .changelog-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
-        .changelog-version { font-size: 1rem; font-weight: 900; color: var(--color-text); }
-        .changelog-date { font-size: 12px; color: var(--color-text-muted); }
-        .changelog-type {
-          font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
-          padding: 2px 8px; border-radius: 99px; border: 1px solid;
-        }
-        .changelog-type.initial { color: var(--color-primary); background: var(--color-primary-faint); border-color: var(--color-primary-subtle); }
-        .changelog-items { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
-        .changelog-items li { font-size: 13px; line-height: 1.6; color: var(--color-text-secondary); padding-left: 16px; position: relative; }
-        .changelog-items li::before { content: '—'; position: absolute; left: 0; color: var(--color-primary); font-weight: 800; }
-      `}</style>
     </div>
   )
 }
