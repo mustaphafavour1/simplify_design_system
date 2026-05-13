@@ -3,6 +3,7 @@ import { PhosphorIcon } from '@/lib/icons'
 import { getProductBySlug, urlFor } from '@/lib/sanity'
 import { ArrowUpRight } from '@phosphor-icons/react/dist/ssr'
 import Image from 'next/image'
+import { ProductScreenshots } from '@/components/docs/ProductScreenshots'
 import { notFound } from 'next/navigation'
 
 export const revalidate = 0
@@ -141,23 +142,13 @@ export default async function MaestroPage() {
 
       <section className="prod-section">
         <h2 className="prod-section-title">Key screens</h2>
-        <div className="prod-screens-grid">
-          {d.screenshots
-            ? d.screenshots.map((s: any, i: number) => (
-                <div key={i} className="prod-screen-card">
-                  <Image src={s.url} alt={s.caption || `Screen ${i + 1}`} width={400} height={280} style={{ width: '100%', height: 'auto', display: 'block' }} />
-                  {s.caption && <div className="prod-screen-caption">{s.caption}</div>}
-                </div>
-              ))
-            : STATIC.screenshots.map(label => (
-                <div key={label} className="prod-screen-ph">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-border-strong)" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="2" /><circle cx="8.5" cy="8.5" r="1.5" /><polyline points="21 15 16 10 5 21" /></svg>
-                  <span>{label}</span>
-                  <span style={{ fontSize: 10, color: 'var(--color-text-muted)', fontWeight: 400 }}>Upload in Studio</span>
-                </div>
-              ))
-          }
-        </div>
+        <p style={{ fontSize:13, color:'var(--color-text-muted)', marginBottom:16 }}>
+          Click any screen to view it full size. Upload screenshots in Studio using Figma naming: <code style={{ fontSize:12, background:'var(--color-bg-subtle)', padding:'1px 6px', borderRadius:4 }}>Module - Screen - State</code>
+        </p>
+        <ProductScreenshots
+          screenshots={d.screenshots}
+          staticScreenshots={STATIC.screenshots}
+        />
       </section>
     </div>
   )
