@@ -8,8 +8,8 @@ export const metadata: Metadata = {
   title: 'Simplify Synergy — Design System',
   description: 'The official design system for Simplify Synergy products.',
   icons: {
-    icon: '/simplify-logo.png',
-    apple: '/simplify-logo.png',
+    icon: '/simplify-icon.png',
+    apple: '/simplify-icon.png',
   },
 }
 
