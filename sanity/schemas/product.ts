@@ -28,12 +28,12 @@ export default defineType({
   ],
   fields: [
     defineField({
-      name: 'hidden',
-      title: 'Hide from website',
+      name: 'showOnSite',
+      title: 'Show on website',
       type: 'boolean',
-      description: 'Turn on to remove this product from the live site without deleting it.',
+      description: 'Turn OFF to hide this product from the live site without deleting it.',
       group: 'overview',
-      initialValue: false,
+      initialValue: true,
     }),
     defineField({ name: 'name',        type: 'string',  title: 'Product name',  group: 'overview', validation: R => R.required() }),
     defineField({ name: 'slug',        type: 'slug',    title: 'Slug',          group: 'overview', options: { source: 'name' }, validation: R => R.required() }),
@@ -86,6 +86,28 @@ export default defineType({
     defineField({
       name: 'designNotes', title: 'Design notes', type: 'array', group: 'design',
       of: [{ type: 'block' }],
+    }),
+
+    // ── Colours ──
+    defineField({
+      name: 'colours',
+      title: 'Product colours',
+      type: 'array',
+      group: 'assets',
+      description: 'Add brand colours — editors enter the hex code, the website renders the swatch automatically.',
+      of: [{
+        type: 'object',
+        name: 'colour',
+        fields: [
+          defineField({ name: 'name', type: 'string', title: 'Colour name', description: 'e.g. VoxePay Blue', validation: R => R.required() }),
+          defineField({
+            name: 'hex', type: 'string', title: 'Hex code',
+            description: 'e.g. #1B56F4 — include the # symbol',
+            validation: R => R.required().regex(/^#[0-9A-Fa-f]{6}$/, { name: 'hex', invert: false }).error('Must be a valid 6-digit hex code like #1B56F4'),
+          }),
+        ],
+        preview: { select: { title: 'name', subtitle: 'hex' } },
+      }],
     }),
 
     // ── Screenshots ──

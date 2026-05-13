@@ -65,16 +65,18 @@ export async function getPatternBySlug(slug: string): Promise<any> {
 
 // ── Products ──────────────────────────────────────────────────────────────
 export async function getAllProducts(): Promise<any> {
-  return sanityFetch(`*[_type == "product" && hidden != true && !(_id in path("drafts.**"))] | order(name asc) { name, slug, tagline, logo, type, status }`)
+  return sanityFetch(`*[_type == "product" && showOnSite != false && !(_id in path("drafts.**"))] | order(name asc) { name, slug, tagline, logo, type, status }`)
 }
 
 export async function getProductBySlug(slug: string): Promise<any> {
+  // Returns the product regardless of showOnSite — pages check the flag themselves
   return sanityFetch(
-    `*[_type == "product" && slug.current == $slug && hidden != true && !(_id in path("drafts.**"))][0] {
-      name, slug, tagline, description, type, status,
+    `*[_type == "product" && slug.current == $slug && !(_id in path("drafts.**"))][0] {
+      name, slug, tagline, description, type, status, showOnSite,
       liveUrl, figmaUrl, logo,
       features[] { iconName, title, description },
       meta[] { key, value },
+      colours[] { name, hex },
       screenshots[] { ..., "url": asset->url }
     }`,
     { slug }

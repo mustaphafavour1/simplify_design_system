@@ -3,6 +3,7 @@ import { PhosphorIcon } from '@/lib/icons'
 import { getProductBySlug, urlFor } from '@/lib/sanity'
 import { ArrowUpRight } from '@phosphor-icons/react/dist/ssr'
 import Image from 'next/image'
+import { notFound } from 'next/navigation'
 
 export const revalidate = 0
 
@@ -43,6 +44,7 @@ const STATUS_MAP: Record<string, { label: string; bg: string; border: string; co
 
 export default async function CompliancePage() {
   const sanity = await getProductBySlug('compliance')
+  if (sanity && sanity.showOnSite === false) return notFound()
   const d = {
     tagline:     sanity?.tagline     || STATIC.tagline,
     description: sanity?.description || STATIC.description,
@@ -52,6 +54,7 @@ export default async function CompliancePage() {
     meta:        sanity?.meta?.length     ? sanity.meta     : STATIC.meta,
     features:    sanity?.features?.length ? sanity.features : STATIC.features,
     logo:        sanity?.logo || null,
+    colours:     sanity?.colours?.length ? sanity.colours : STATIC.colours,
     screenshots: sanity?.screenshots?.length ? sanity.screenshots : null,
   }
   const badge = STATUS_MAP[d.status] ?? STATUS_MAP.internal
@@ -126,7 +129,7 @@ export default async function CompliancePage() {
       <section className="prod-section">
         <h2 className="prod-section-title">Product colours</h2>
         <div className="prod-color-row">
-          {STATIC.colours.map(c => (
+          {d.colours.map(c => (
             <div key={c.name} className="prod-swatch">
               <div className="prod-swatch-block" style={{ background: c.hex, border: c.hex === '#FFFFFF' ? '1.5px solid var(--color-border)' : 'none' }} />
               <div className="prod-swatch-name">{c.name}</div>
