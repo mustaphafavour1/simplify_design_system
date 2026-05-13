@@ -56,7 +56,7 @@ export default async function VoxePayPage() {
     meta:        sanity?.meta?.length     ? sanity.meta     : STATIC.meta,
     features:    sanity?.features?.length ? sanity.features : STATIC.features,
     logo:        sanity?.logo        || null,
-    colours:     sanity?.colours?.length ? sanity.colours : STATIC.colours,
+    colours:     sanity?.colours?.length ? sanity.colours : COLOURS,
     screenshots: sanity?.screenshots?.length ? sanity.screenshots : null,
   }
   const badge = STATUS_MAP[d.status] ?? STATUS_MAP.live
