@@ -4,8 +4,6 @@ export default defineType({
   name: 'brandSettings',
   title: 'Brand Settings',
   type: 'document',
-  // __experimental_actions restricts to edit-only — no create, delete, or duplicate
-  __experimental_actions: ['update', 'publish'],
   groups: [
     { name: 'logos',   title: 'Logos' },
     { name: 'links',   title: 'Links' },
