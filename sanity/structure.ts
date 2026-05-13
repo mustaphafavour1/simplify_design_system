@@ -4,16 +4,39 @@ export const structure = (S: StructureBuilder) =>
   S.list()
     .title('SS Design System')
     .items([
+
+      // ── Brand (singleton) ──────────────────────────────────────────────
       S.listItem()
         .title('🎨 Brand')
         .child(
           S.list().title('Brand').items([
-            S.documentTypeListItem('brandPage').title('Brand Pages'),
+
+            // Brand Settings — singleton, one document only
+            S.listItem()
+              .title('Brand Settings')
+              .id('brandSettings')
+              .child(
+                S.document()
+                  .schemaType('brandSettings')
+                  .documentId('brandSettings')
+                  .title('Brand Settings')
+              ),
+
+            S.divider(),
+
+            // Brand page docs (colours, typography etc) — keep as list
+            S.listItem()
+              .title('Brand Pages')
+              .child(S.documentTypeList('brandPage').title('Brand Pages')),
           ])
         ),
+
+      // ── Foundations ────────────────────────────────────────────────────
       S.listItem()
         .title('🧱 Foundations')
         .child(S.documentTypeList('foundation').title('Foundations')),
+
+      // ── Components ────────────────────────────────────────────────────
       S.listItem()
         .title('🔘 Components')
         .child(
@@ -24,22 +47,31 @@ export const structure = (S: StructureBuilder) =>
             S.listItem().title('Data Display').child(S.documentList().title('Data Display').filter('_type == "component" && category == "data-display"')),
             S.listItem().title('Feedback & Overlays').child(S.documentList().title('Feedback').filter('_type == "component" && category == "feedback"')),
             S.listItem().title('Layout').child(S.documentList().title('Layout').filter('_type == "component" && category == "layout"')),
-            S.listItem().title('Mobile').child(S.documentList().title('Mobile').filter('_type == "component" && category == "mobile"')),
             S.divider(),
             S.documentTypeListItem('component').title('All Components'),
           ])
         ),
+
+      // ── Patterns ──────────────────────────────────────────────────────
       S.listItem()
         .title('📐 Patterns')
         .child(S.documentTypeList('pattern').title('Patterns')),
+
+      // ── Products ──────────────────────────────────────────────────────
       S.listItem()
         .title('📱 Products')
         .child(S.documentTypeList('product').title('Products')),
+
       S.divider(),
+
+      // ── Changelog ─────────────────────────────────────────────────────
       S.listItem()
         .title('📋 Changelog')
         .child(S.documentTypeList('changelogEntry').title('Changelog')),
+
       S.divider(),
+
+      // ── Nav Sections ──────────────────────────────────────────────────
       S.listItem()
         .title('🗂️ Nav Sections')
         .child(S.documentTypeList('navSection').title('Nav Sections')),
