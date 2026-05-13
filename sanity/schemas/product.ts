@@ -27,6 +27,14 @@ export default defineType({
     { name: 'assets',     title: 'Assets & Links' },
   ],
   fields: [
+    defineField({
+      name: 'hidden',
+      title: 'Hide from website',
+      type: 'boolean',
+      description: 'Turn on to remove this product from the live site without deleting it.',
+      group: 'overview',
+      initialValue: false,
+    }),
     defineField({ name: 'name',        type: 'string',  title: 'Product name',  group: 'overview', validation: R => R.required() }),
     defineField({ name: 'slug',        type: 'slug',    title: 'Slug',          group: 'overview', options: { source: 'name' }, validation: R => R.required() }),
     defineField({ name: 'tagline',     type: 'string',  title: 'Tagline',       group: 'overview', description: 'One-line product description shown in the header.' }),
