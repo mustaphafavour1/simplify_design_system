@@ -92,3 +92,14 @@ export async function getChangelog(): Promise<any> {
 export async function getNavSections(): Promise<any> {
   return sanityFetch(`*[_type == "navSection" && !(_id in path("drafts.**"))] | order(order asc) { label, "children": items[] { "label": label, "href": href } }`)
 }
+
+// ── Brand Settings (singleton) ────────────────────────────────────────────
+export async function getBrandSettings(): Promise<any> {
+  return sanityFetch(
+    `*[_type == "brandSettings" && _id == "brandSettings"][0] {
+      brandName, tagline, description,
+      websiteUrl, figmaUrl,
+      logoPrimary, logoWhite, logoDark, logoMark, logomarkWhite
+    }`
+  )
+}
