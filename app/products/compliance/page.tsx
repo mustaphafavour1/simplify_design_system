@@ -129,7 +129,7 @@ export default async function CompliancePage() {
       <section className="prod-section">
         <h2 className="prod-section-title">Product colours</h2>
         <div className="prod-color-row">
-          {d.colours.map(c => (
+          {d.colours.map((c: any) => (
             <div key={c.name} className="prod-swatch">
               <div className="prod-swatch-block" style={{ background: c.hex, border: c.hex === '#FFFFFF' ? '1.5px solid var(--color-border)' : 'none' }} />
               <div className="prod-swatch-name">{c.name}</div>
